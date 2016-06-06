@@ -5,18 +5,27 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  database: project_development
+  database: svitla_project_development
   pool: 5
+  host: localhost
+  username: pguser
+  password: 1111
   timeout: 5000
 
 test:
   adapter: postgresql
-  database: project_test
+  database: svitla_project_test
   pool: 5
+  host: localhost
+  username: pguser
+  password: 1111
   timeout: 5000
 
 production:
   adapter: postgresql
-  database: project_production
+  database: svitla_project_production
   pool: 5
+  host: localhost
+  username: pguser
+  password: 1111
   timeout: 5000
