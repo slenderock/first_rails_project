@@ -3,11 +3,12 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true
   validate :age_checking
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+  scope :active_user, -> { where active: true }
+  scope :oldfag,  ->  { active_user.where('birthday <= ?', Time.now - 21.year) }
 
-private
+  private
   def age_checking
     errors.add(:birthday, "U are too small, baby") unless
-    Time.now.utc.year - birthday.year - (birthday.to_date.change(:year => now.year) > now ? 1 : 0) > 15
+    Time.now.utc.year - birthday.year > 15
   end
-
 end
