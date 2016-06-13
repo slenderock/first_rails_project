@@ -1,9 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.22.2'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'pg'
 gem 'jquery-rails'
 gem 'test-unit', '~> 3.0'
@@ -22,6 +19,7 @@ end
 
 group :development do
   gem 'pry'
+  gem 'thin'
 end
 
 # To use ActiveModel has_secure_password
