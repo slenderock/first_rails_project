@@ -1,15 +1,41 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :birthday, :active
+  has_many :images, :as => :imagiable
 
-  before_save :check_name_presence
+  attr_accessible :first_name, :last_name, :email, :birthday, :active, :password, :password_confirmation
+  attr_accessor :password
 
-  scope :active_user, ->  { where active: true }
-  scope :oldfag,      ->  { active_user.where('birthday <= ?', Time.now - 21.year) }
+  before_save :encrypt_password
 
-  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
-  validates :email, :uniqueness => true
-  validates :birthday, :presence => true
-  validate  :age_checking
+  # before_save :check_name_presence
+
+  # scope :active_user, ->  { where active: true }
+  # scope :oldfag,      ->  { active_user.where('birthday <= ?', Time.now - 21.year) }
+
+  # validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+
+  # validates :birthday, :presence => true
+  # validate  :age_checking
+
+  validates_confirmation_of :password
+  validates_presence_of :password, :on => :create
+  validates_presence_of :email
+  validates_uniqueness_of :email
+
+  def encrypt_password
+    if password.present?
+      self.password_salt = BCrypt::Engine.generate_salt
+      self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+    end
+  end
+
+  def self.authenticate(email, password)
+    user = find_by_email(email)
+    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+      user
+    else
+      nil
+    end
+  end
 
   private
 
