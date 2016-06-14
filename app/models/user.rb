@@ -5,17 +5,16 @@ class User < ActiveRecord::Base
 
   scope :active_user, ->  { where active: true }
   scope :oldfag,      ->  { active_user.where('birthday <= ?', Time.now - 21.year) }
-  scope :search,      ->  (first_name, last_name)  { where(first_name: first_name, last_name: last_name)}
 
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates :email, :uniqueness => true
   validates :birthday, :presence => true
-  validate :age_checking
+  validate  :age_checking
 
   private
 
   def check_name_presence
-    self.active = !first_name.blank? && !last_name.blank?
+    self.active = first_name.present? && last_name.present?
 
     true
   end
