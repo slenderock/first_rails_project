@@ -6,15 +6,15 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
 
-  # before_save :check_name_presence
+  before_save :check_name_presence
 
-  # scope :active_user, ->  { where active: true }
-  # scope :oldfag,      ->  { active_user.where('birthday <= ?', Time.now - 21.year) }
+  scope :active_user, ->  { where active: true }
+  scope :oldfag,      ->  { active_user.where('birthday <= ?', Time.now - 21.year) }
 
-  # validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
+  validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
-  # validates :birthday, :presence => true
-  # validate  :age_checking
+  validates :birthday, :presence => true
+  validate  :age_checking
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
