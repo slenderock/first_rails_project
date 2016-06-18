@@ -8,7 +8,7 @@ development:
   database: svitla_project_development
   pool: 5
   host: localhost
-  username: pguser
+  username: postgres
   password: 1111
   timeout: 5000
 
@@ -17,7 +17,7 @@ test:
   database: svitla_project_test
   pool: 5
   host: localhost
-  username: pguser
+  username: postgres
   password: 1111
   timeout: 5000
 
@@ -26,6 +26,6 @@ production:
   database: svitla_project_production
   pool: 5
   host: localhost
-  username: pguser
+  username: postgres
   password: 1111
   timeout: 5000
