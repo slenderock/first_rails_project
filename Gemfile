@@ -20,5 +20,3 @@ end
 
 #Heroku
 gem 'rails_12factor', group: :production
-source "https://rubygems.org"
-ruby "2.3.1"
