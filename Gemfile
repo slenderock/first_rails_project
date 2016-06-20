@@ -13,10 +13,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development do
-  gem 'pry'
-  gem 'thin'
-end
+# group :development do
+#   gem 'pry'
+#   gem 'thin'
+# end
 
 #Heroku
 gem 'rails_12factor', group: :production
