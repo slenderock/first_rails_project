@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :images, :as => :imagiable
+  has_many :images, :as => :imageable
 
   attr_accessible :first_name, :last_name, :email, :birthday, :active, :password, :password_confirmation
   attr_accessor :password
