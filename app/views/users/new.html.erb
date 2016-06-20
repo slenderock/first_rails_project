@@ -2,7 +2,7 @@
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div class=  "error_messages" >
-      <h2> Form is invalid </h2>
+      <h3> Form is invalid </h3>
       <u1>
         <% for message in @user.errors.full_messages %>
           <li><%= message %></li>
@@ -10,6 +10,7 @@
       </u1>
     </div>
   <% end %>
+
   <p>
     <%= f.label :email %><br />
     <%= f.text_field :email %>
