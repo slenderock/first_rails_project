@@ -129,12 +129,10 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   pg
-  pry
   rails (= 3.2.22.2)
   rails_12factor
   sass-rails (~> 3.2.3)
   test-unit (~> 3.0)
-  thin
   uglifier (>= 1.0.3)
 
 BUNDLED WITH
