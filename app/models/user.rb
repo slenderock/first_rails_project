@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
 
   def encrypt_password
     if password.present?
@@ -39,7 +41,7 @@ class User < ActiveRecord::Base
 
   private
 
-  def self.search (full_name)                 #I will change this method, for less monkey code but now I'll move up
+  def self.search (full_name)
     splited_name = full_name.split(' ')
     find_by_first_name_and_last_name(splited_name.first, splited_name.last)
   end
