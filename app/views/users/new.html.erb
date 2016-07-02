@@ -1,40 +1,35 @@
-<h1>Sign Up</h1>
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class=  "error_messages" >
-      <h3> Form is invalid </h3>
-      <u1>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
+<!DOCTYPE html>
+<html lang="en">
+  <title>Sign up</title>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <div class="container">
+      <%= form_for @user do |f| %>
+        <% if @user.errors.any? %>
+          <div class=  "error_messages" >
+            <h3> Form is invalid </h3>
+            <u1>
+              <% for message in @user.errors.full_messages %>
+                <li><%= message %></li>
+              <% end %>
+            </u1>
+          </div>
         <% end %>
-      </u1>
-    </div>
-  <% end %>
 
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p>
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </p>
-  <p>
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </p>
-  <p>
-    <%= f.label :birthday %><br />
-    <%= f.text_field :birthday %>
-  </p>
-
-  <p class="button"><%= f.submit %></p>
-<% end %>
+        <h2 class="form-signin-heading">Sign Up</h2>
+            <%= f.text_field :email, class: 'form-control', placeholder: 'email'%><br />
+            <%= f.password_field :password, class: 'form-control', placeholder: 'password' %><br />
+            <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'password confirmation'%><br />
+            <%= f.text_field :first_name, class: 'form-control', placeholder: 'first name'%><br />
+            <%= f.text_field :last_name, class: 'form-control', placeholder: 'last name'%><br />
+            <%= f.text_field :birthday, class: 'form-control', placeholder: 'birthday'%><br />
+        <p class="button"><%= submit_tag "Sign Up", class: 'btn btn-lg btn-primary btn-block' %></p>
+      <% end %>
+    </div> <!-- /container -->
+  </body>
+</html>

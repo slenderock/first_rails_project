@@ -7,6 +7,8 @@ gem 'jquery-rails'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'thin'
 gem 'slim'
+gem "rmagick"
+gem "carrierwave"
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'

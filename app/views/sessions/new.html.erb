@@ -1,13 +1,22 @@
-<h1>Log in</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <title>Log in</title>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
 
-<%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email, params[:email] %>
-  </p>
-  <p>
-    <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
-  </p>
-  <p class="button"><%= submit_tag "Log in" %></p>
-<% end %>
+  <body>
+    <div class="container">
+      <%= form_tag sessions_path do %>
+        <h2 class="form-signin-heading">Please log in</h2>
+
+        <%= email_field_tag :email,'',autofocus: true, class: 'form-control', placeholder: 'Email Address'%><br />
+        <%= password_field_tag :password, '', autocomplete: "off", class: 'form-control' , placeholder: 'Password' %><br />
+
+        <p class="button"><%= submit_tag "Log in", class: 'btn btn-lg btn-primary btn-block' %></p>
+      <% end %>
+    </div> <!-- /container -->
+  </body>
+</html>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_login, :only => [:new, :create]
+  skip_before_filter :require_login, :only => [:new, :create, :home]
 
   def show
   end
@@ -32,5 +32,8 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def home
   end
 end
