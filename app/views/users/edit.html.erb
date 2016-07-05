@@ -28,6 +28,9 @@
           <%= f.text_field :birthday, class: 'form-control', placeholder: 'birthday'%><br />
           <%= f.password_field :password, class: 'form-control', placeholder: 'password' %><br />
           <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'password confirmation'%><br />
+          <%= f.fields_for :images do |pic| %>
+            <%= pic.file_field :image %>
+          <% end %>
           <p class="button"><%= submit_tag "Save changes", class: 'btn btn-lg btn-primary btn-block' %></p>
       <% end %>
     </div> <!-- /container -->

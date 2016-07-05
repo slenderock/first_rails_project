@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
   has_many :images, :as => :imageable
 
-  attr_accessible :first_name, :last_name, :email, :birthday, :active, :password, :password_confirmation
+  attr_accessible :first_name, :last_name, :email, :birthday, :active, :password, :password_confirmation, :images_attributes
+
+  accepts_nested_attributes_for :images
+
   attr_accessor :password
 
   before_save :encrypt_password
@@ -20,7 +23,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, length: { minimum: 6 }, allow_nil: true
 
 
   def encrypt_password
