@@ -18,8 +18,8 @@
       <%= current_user.birthday %><br>
 
       <% for image in current_user.images %>
-        <%= image_tag image.image_url(:thumb) if image.image? %>
-      <% end %><br>
+        <%= image_tag image.image_url(:thumb) %><br>
+      <% end %>
 
       <%= link_to "Edit", edit_user_path %>
     </div>

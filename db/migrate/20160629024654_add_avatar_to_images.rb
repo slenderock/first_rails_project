@@ -1,5 +1,5 @@
 class AddAvatarToImages < ActiveRecord::Migration
   def change
-    add_column :images, :image, :string, null: false
+    add_column :images, :image, :string
   end
 end

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20160629024654) do
     t.string   "imageable_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.string   "image",          :null => false
+    t.string   "image"
   end
 
   create_table "users", :force => true do |t|

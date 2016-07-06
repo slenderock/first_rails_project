@@ -1,15 +1,17 @@
 class User < ActiveRecord::Base
   has_many :images, :as => :imageable
 
-  attr_accessible :first_name, :last_name, :email, :birthday, :active, :password, :password_confirmation, :images_attributes
-
   accepts_nested_attributes_for :images
+
+  attr_accessible :first_name, :last_name, :email, :birthday, :active, :password, :password_confirmation, :images_attributes
 
   attr_accessor :password
 
   before_save :encrypt_password
 
   before_save :check_name_presence
+
+  after_save :check_avatar
 
   scope :active_user, ->  { where active: true }
   scope :oldfag,      ->  { active_user.where('birthday <= ?', Time.now - 21.year) }
@@ -60,5 +62,9 @@ class User < ActiveRecord::Base
 
   def age_checking
     errors.add(:birthday, "U are too small, baby") if birthday && age_calculate < 15
+  end
+
+  def check_avatar
+    self.images.create! if images.empty?
   end
 end
