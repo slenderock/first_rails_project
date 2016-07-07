@@ -1,5 +1,7 @@
+# frozen_string_literal: false
+# Users controller
 class UsersController < ApplicationController
-  skip_before_filter :require_login, :only => [:new, :create, :home]
+  skip_before_filter :require_login, only: [:new, :create, :home]
 
   def show
   end
@@ -12,10 +14,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:success] = "Signed Up"
+      flash[:success] = 'Signed Up'
       redirect_to log_in_path
     else
-      render "new"
+      @user.images.build
+      render 'new'
     end
   end
 
@@ -24,11 +27,15 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @users.each do |user|
+      user.position #= params[:user].index(user.id.to_s) + 1
+      user.save
+    end
   end
 
   def update
     if current_user.update_attributes(params[:user])
-      flash[:success] = "Profile updated"
+      flash[:success] = 'Profile updated'
       redirect_to current_user
     else
       render 'edit'

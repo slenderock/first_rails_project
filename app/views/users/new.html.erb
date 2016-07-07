@@ -22,14 +22,14 @@
         <% end %>
 
         <h2 class="form-signin-heading">Sign Up</h2>
-            <%= f.text_field :email, class: 'form-control', placeholder: 'email'%><br />
-            <%= f.password_field :password, class: 'form-control', placeholder: 'password' %><br />
-            <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'password confirmation'%><br />
-            <%= f.text_field :first_name, class: 'form-control', placeholder: 'first name'%><br />
-            <%= f.text_field :last_name, class: 'form-control', placeholder: 'last name'%><br />
-            <%= f.text_field :birthday, class: 'form-control', placeholder: 'birthday'%><br />
+            <%= f.text_field :email, class: 'form-control', placeholder: 'email'%><br>
+            <%= f.password_field :password, class: 'form-control', placeholder: 'password' %><br>
+            <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'password confirmation'%><br>
+            <%= f.text_field :first_name, class: 'form-control', placeholder: 'first name'%><br>
+            <%= f.text_field :last_name, class: 'form-control', placeholder: 'last name'%><br>
+            <%= f.text_field :birthday, class: 'form-control', placeholder: 'birthday'%><br>
             <%= f.fields_for :images do |pic| %>
-              <%= pic.file_field :image %><br />
+              <%= pic.file_field :image %><br>
             <% end %>
         <p class="button"><%= submit_tag "Sign Up", class: 'btn btn-lg btn-primary btn-block' %></p>
       <% end %>
