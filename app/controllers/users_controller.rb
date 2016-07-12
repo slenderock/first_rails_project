@@ -26,11 +26,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
-    # @users.each do |user|
-    #   user.position #= params[:user].index(user.id.to_s) + 1
-    #   user.save
-    # end
+    @users = User.paginate(page: params[:page], per_page: 10)
   end
 
   def update

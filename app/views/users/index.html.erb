@@ -20,6 +20,7 @@
   </head>
 
   <body>
+
     <center>
       <h1>All users</h1>
       <ul id="sortable">
@@ -30,6 +31,7 @@
           </li>
         <% end %>
       </ul>
+      <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
     </center>
   </body>
 </html>

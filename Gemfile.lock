@@ -148,6 +148,8 @@ GEM
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.1.0)
     will_paginate (3.1.0)
+    will_paginate-bootstrap (1.0.1)
+      will_paginate (>= 3.0.3)
 
 PLATFORMS
   ruby
@@ -169,7 +171,7 @@ DEPENDENCIES
   test-unit (~> 3.0)
   thin
   uglifier (>= 1.0.3)
-  will_paginate (~> 3.1.0)
+  will_paginate-bootstrap (~> 1.0, >= 1.0.1)
 
 RUBY VERSION
    ruby 2.3.1p112

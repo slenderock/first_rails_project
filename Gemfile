@@ -10,7 +10,7 @@ gem 'thin'
 gem 'slim'
 gem 'rmagick'
 gem 'carrierwave'
-gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
