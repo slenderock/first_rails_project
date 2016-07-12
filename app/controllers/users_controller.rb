@@ -27,10 +27,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @users.each do |user|
-      user.position #= params[:user].index(user.id.to_s) + 1
-      user.save
-    end
+    # @users.each do |user|
+    #   user.position #= params[:user].index(user.id.to_s) + 1
+    #   user.save
+    # end
   end
 
   def update

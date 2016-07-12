@@ -18,13 +18,13 @@
     });
     </script>
   </head>
+
   <body>
     <center>
       <h1>All users</h1>
       <ul id="sortable">
-        <%= @users.each do |user| %>
+        <% @users.each do |user| %>
           <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
-          <%= user.position %>
           <%= user.first_name %>
           <%= user.last_name %>
           </li>

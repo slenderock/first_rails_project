@@ -10,18 +10,19 @@
   <body>
     <div class="container">
       <%= form_for current_user do |f| %>
-        <% if current_user.errors.any? %>
-          <div class=  "error_messages" >
-            <h3> Form is invalid </h3>
-            <u1>
-              <% for message in current_user.errors.full_messages %>
-                <li><%= message %></li>
-              <% end %>
-            </u1>
-          </div>
-        <% end %>
+        <h2 class="form-signin-heading", align="center">Update your profile</h2>
+          <% if current_user.errors.any? %>
+            <div class= "error_messages" >
+              <div class="alert alert-warning">
+                <strong>
+                  <% for message in current_user.errors.full_messages %>
+                    <%= message %><br>
+                  <% end %>
+                </strong>
+               </div>
+            </div>
+          <% end %>
 
-        <h2 class="form-signin-heading">Update your profile</h2>
           <%= f.text_field :email, class: 'form-control', placeholder: 'email'%><br>
           <%= f.text_field :first_name, class: 'form-control', placeholder: 'first name'%><br>
           <%= f.text_field :last_name, class: 'form-control', placeholder: 'last name'%><br>

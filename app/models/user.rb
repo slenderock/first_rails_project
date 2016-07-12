@@ -20,21 +20,16 @@ class User < ActiveRecord::Base
   scope :active_user, -> { where active: true }
   scope :oldfag, -> { active_user.where('birthday <= ?', Time.now - 21.year) }
 
-  validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
-
   validates :birthday, presence: true
   validate  :age_checking
 
-  validates_confirmation_of :password
-  validates_presence_of :password, on: :create
-  validates :password, length: { minimum: 6 }
   validates_presence_of :email
+  validates_format_of :email, with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
   validates_uniqueness_of :email
 
-  def encrypt_password
-    self.password_salt = BCrypt::Engine.generate_salt
-    self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
-  end
+  validates_presence_of :password, on: :create
+  validates :password, length: { minimum: 6 }
+  validates_confirmation_of :password
 
   def self.authenticate(email, password)
     user = find_by_email(email)
@@ -44,6 +39,11 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def encrypt_password
+    self.password_salt = BCrypt::Engine.generate_salt
+    self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
+  end
 
   def check_name_presence
     self.active = first_name.present? && last_name.present?
