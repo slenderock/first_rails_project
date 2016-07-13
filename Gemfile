@@ -11,6 +11,7 @@ gem 'slim'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
+gem 'cancancan', '~> 1.9'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'

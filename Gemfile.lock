@@ -36,6 +36,7 @@ GEM
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
     builder (3.0.4)
+    cancancan (1.15.0)
     carrierwave (0.11.2)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -157,6 +158,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   bootstrap-sass (= 3.1.1.0)
+  cancancan (~> 1.9)
   carrierwave
   coffee-rails (~> 3.2.1)
   jquery-rails

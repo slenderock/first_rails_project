@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :first_name, :last_name, :email, :birthday, :active,
                   :password, :password_confirmation, :images_attributes,
-                  :position
+                  :position, :role
 
   attr_accessor :password
 

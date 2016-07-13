@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <%= stylesheet_link_tag :application %>
-    <%= favicon_link_tag "favicon.png" %>
+    <%= favicon_link_tag "favicon.ico" %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,11 +23,15 @@
             <% if current_user %>
              <font color="grey">Welcome, <%= current_user.first_name %></font>
               <%= link_to 'Profile', user_path(current_user) %>
-              <%= link_to 'All users', users_path %>
+              <% if can? :update, User %>
+                <%= link_to 'All users', users_path %>
+              <% end -%>
               <%= link_to 'Log out', log_out_path %>
             <% else %>
               <%= link_to 'Sign up', sign_up_path, class:"btn btn-success"%>
+
               <font color="grey"> or </font>
+
               <%= link_to 'log in', log_in_path, class:"btn btn-success"%>
             <% end %>
           </form>
@@ -36,7 +40,7 @@
     </nav>
 
     <% flash.each do |name, msg| %>
-      <div class="alert alert-success">
+      <div class="alert alert-warning">
         <strong><%= content_tag :div, msg, id: "flash_#{name}" %></strong>
       </div>
     <% end %>

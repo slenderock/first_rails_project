@@ -6,11 +6,13 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
     <style>
-    #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
-    #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 40px; }
-    #sortable li span { position: absolute; margin-left: -1.3em; }
+      #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+      #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 40px; }
+      #sortable li span { position: absolute; margin-left: -1.3em; }
     </style>
+
     <script>
     $(function() {
       $( "#sortable" ).sortable();
@@ -20,18 +22,38 @@
   </head>
 
   <body>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th> Email </th>
+          <th> First name </th>
+          <th> Role  </th>
+          <th> Actions </th>
 
-    <center>
-      <h1>All users</h1>
-      <ul id="sortable">
+        </tr>
+      </thead>
+
+      <tbody  id="sortable">
         <% @users.each do |user| %>
-          <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
-          <%= user.first_name %>
-          <%= user.last_name %>
-          </li>
+          <% unless  user.role == 'super_admin' %>
+            <tr data-item-id= <%= "#{user.id}" %> class="item">
+              <td><%= user.email %></td>
+              <td><%= user.first_name %></td>
+              <td><%= user.role %></td>
+
+              <td align="left">
+                <%= link_to 'show', user_path(user), class: 'btn btn-info' %>
+                <%= link_to 'edit', edit_user_path(user), class: 'btn btn-warning' %>
+                <%= button_to "delete", user, method: :delete, class: 'btn btn-danger' %>
+              </td>
+            </tr>
+          <% end -%>
         <% end %>
-      </ul>
-      <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
-    </center>
+      </tbody>
+    </table>
+
+    <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
   </body>
 </html>
+
+

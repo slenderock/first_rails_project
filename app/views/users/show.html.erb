@@ -7,30 +7,31 @@
   }
 </style>
 
-<%= form_for current_user, htm: {multipart: true} do |f| %>
+<%= form_for @user, htm: {multipart: true} do |f| %>
   <div class="panel panel-default">
     <div class="panel-heading">Profile</div>
 
-    <div class="panel-body">
-      <% for image in current_user.images %>
-        <div class="leftimg">
-          <%= image_tag image.image_url(:thumb) %><br>
-        </div>
-      <% end %>
+      <div class="panel-body">
+        <% for image in @user.images %>
+          <div class="leftimg">
+            <%= image_tag image.image_url(:thumb) %><br>
+          </div>
+        <% end %>
 
-      <p><br>
-        <%= f.label :first_name %> :
-        <%= current_user.first_name %><br>
+        <p><br>
+          <%= f.label :first_name %> :
+          <%= @user.first_name %><br>
 
-        <%= f.label :last_name %> :
-        <%= current_user.last_name %><br>
+          <%= f.label :last_name %> :
+          <%= @user.last_name %><br>
 
-        <%= f.label :email %> :
-        <%= current_user.email %><br>
+          <%= f.label :email %> :
+          <%= @user.email %><br>
 
-        <%= f.label :birthday %> :
-        <%= current_user.birthday %><br>
-      </p>
+          <%= f.label :birthday %> :
+          <%= @user.birthday %><br>
+        </p>
+      </div>
     </div>
   </div>
 

@@ -1,0 +1,31 @@
+<div class= "container">
+  <%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <div class= "error_messages" >
+        <div class="alert alert-danger">
+          <strong>
+            <% for message in @user.errors.full_messages %>
+              <%= message %><br>
+            <% end %>
+          </strong>
+         </div>
+      </div>
+    <% end %>
+
+    <%= f.text_field :email, autofocus: true, class: 'form-control', placeholder: 'email'%><br>
+    <%= f.password_field :password, class: 'form-control', placeholder: 'password' %><br>
+    <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'password confirmation'%><br>
+    <%= f.text_field :first_name, class: 'form-control', placeholder: 'first name'%><br>
+    <%= f.text_field :last_name, class: 'form-control', placeholder: 'last name'%><br>
+    <%= f.text_field :birthday, class: 'form-control', placeholder: 'birthday'%><br>
+    <%= f.fields_for :images do |pic| %>
+      <%= pic.file_field :image %><br>
+    <% end %>
+
+    <% if can? :manage, :admin %>
+      <label class="checkbox-inline"><input type="checkbox" value="">Make admin<%= f.check_box :role, {}, 'admin', nil %></label><br>
+    <% end %><br>
+
+    <p class="button"><%= submit_tag "Save", class: 'btn btn-lg btn-primary btn-block' %></p>
+  <% end %>
+</div> <!-- /container -->
