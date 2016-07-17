@@ -21,10 +21,20 @@ group :assets do
 end
 
 group :development do
-  gem 'pry'
   gem 'test-unit', '~> 3.0'
   gem 'rubocop', require: false
 end
 
-# Heroku
-gem 'rails_12factor', group: :production
+group :test, :development do
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'pry'
+end
+
+group :test do
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker', '~> 1.6', '>= 1.6.5'
+end
+
+group :production do
+  gem 'rails_12factor'
+end

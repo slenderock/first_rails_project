@@ -29,7 +29,6 @@
           <th> First name </th>
           <th> Role  </th>
           <th> Actions </th>
-
         </tr>
       </thead>
 
@@ -41,10 +40,10 @@
               <td><%= user.first_name %></td>
               <td><%= user.role %></td>
 
-              <td align="left">
-                <%= link_to 'show', user_path(user), class: 'btn btn-info' %>
+              <td >
+                <%= link_to 'show', user_path(user), class: 'btn btn-info' %><br>
                 <%= link_to 'edit', edit_user_path(user), class: 'btn btn-warning' %>
-                <%= button_to "delete", user, method: :delete, class: 'btn btn-danger' %>
+                <%= button_to "delete", user, method: :delete, :confirm => "Are you sure?", class: 'btn btn-danger' %>
               </td>
             </tr>
           <% end -%>

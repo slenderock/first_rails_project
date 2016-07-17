@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   validates_presence_of :password, on: :create
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6, maximum: 30 }
   validates_confirmation_of :password
 
   def self.authenticate(email, password)

@@ -5,9 +5,6 @@ class UsersController < ApplicationController
 
   skip_before_filter :require_login, only: [:new, :create, :home]
 
-  def show
-  end
-
   def new
     @user.images.build
   end
@@ -43,6 +40,6 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: 'User deleted.'
   end
 
-  def home
+  def show
   end
 end

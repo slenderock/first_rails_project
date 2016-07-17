@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # frozen_string_literal: true
 ActiveRecord::Schema.define(version: 20_160_712_185_533) do
   create_table 'images', force: true do |t|
