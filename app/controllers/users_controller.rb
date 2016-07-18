@@ -19,15 +19,15 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def index
     @users = User.paginate(page: params[:page], per_page: 10)
   end
 
+  def edit
+  end
+
   def update
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       flash[:success] = 'Profile updated'
       redirect_to @user
     else
@@ -41,5 +41,17 @@ class UsersController < ApplicationController
   end
 
   def show
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email,
+                                 :birthday, :active, :password,
+                                 :password_confirmation, :images_attributes,
+                                 :position, :role,
+                                 images_attributes: [:imageable_id,
+                                                     :imageable_type,
+                                                     :image])
   end
 end
