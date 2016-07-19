@@ -5,10 +5,6 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :images
 
-  attr_accessible :first_name, :last_name, :email, :birthday, :active,
-                  :password, :password_confirmation, :images_attributes,
-                  :position, :role
-
   attr_accessor :password
 
   before_save :encrypt_password
@@ -64,5 +60,6 @@ class User < ActiveRecord::Base
 
   def check_avatar
     images.create! if images.empty?
+    images.first.delete while images.count > 1
   end
 end

@@ -10,7 +10,6 @@
 <%= form_for @user, htm: {multipart: true} do |f| %>
   <div class="panel panel-default">
     <div class="panel-heading">Profile</div>
-
       <div class="panel-body">
         <% for image in @user.images %>
           <div class="leftimg">
