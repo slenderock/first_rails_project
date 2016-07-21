@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 # model users
 class User < ActiveRecord::Base
+  require 'csv'
+  require 'securerandom'
+
   has_many :images, as: :imageable
 
   accepts_nested_attributes_for :images
@@ -26,6 +29,18 @@ class User < ActiveRecord::Base
   validates_presence_of :password, on: :create
   validates :password, length: { minimum: 6, maximum: 30 }
   validates_confirmation_of :password
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      user_hash = row.to_hash.merge('password' => SecureRandom.hex(8))
+      user = User.where(email: user_hash['email'])
+      if user.count == 1
+        user.first.update_attributes(user_hash)
+      else
+        User.create!(user_hash)
+      end
+    end
+  end
 
   def self.authenticate(email, password)
     user = find_by_email(email)

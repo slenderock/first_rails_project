@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'log_in'  => 'sessions#new', as: 'log_in'
   get 'sign_up' => 'users#new', as: 'sign_up'
   root to: 'sessions#new'
-  resources :users, except: [:new]
   resource :sessions, except: [:new, :destroy]
+  resources :users, except: [:new] do
+    collection { post :import }
+  end
 end

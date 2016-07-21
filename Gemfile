@@ -23,6 +23,7 @@ end
 group :development do
   gem 'test-unit', '~> 3.0'
   gem 'rubocop', require: false
+  gem 'letter_opener'
 end
 
 group :test, :development do

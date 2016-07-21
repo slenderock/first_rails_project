@@ -43,6 +43,11 @@ class UsersController < ApplicationController
   def show
   end
 
+  def import
+    User.import(params[:file])
+    redirect_to users_path, notice: 'Users imported.'
+  end
+
   private
 
   def user_params

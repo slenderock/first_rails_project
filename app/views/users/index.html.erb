@@ -22,13 +22,14 @@
   </head>
 
   <body>
+
+
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
           <th> Email </th>
           <th> First name </th>
           <th> Role  </th>
-          <th> Actions </th>
         </tr>
       </thead>
 
@@ -40,11 +41,10 @@
               <td><%= user.first_name %></td>
               <td><%= user.role %></td>
 
-              <td >
-                <%= link_to 'show', user_path(user), class: 'btn btn-info' %><br>
-                <%= link_to 'edit', edit_user_path(user), class: 'btn btn-warning' %>
-                <%= button_to "delete", user, method: :delete, :confirm => "Are you sure?", class: 'btn btn-danger' %>
-              </td>
+              <td align = 'center'><%= link_to 'show', user_path(user), class: 'btn btn-info' %></td>
+              <td align = 'center'><%= link_to 'edit', edit_user_path(user), class: 'btn btn-warning' %></td>
+              <td align = 'center'><%= button_to 'delete', user, method: :delete, :confirm => 'Are you sure?', class: 'btn btn-danger' %></td>
+
             </tr>
           <% end -%>
         <% end %>
@@ -52,6 +52,15 @@
     </table>
 
     <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+
+    <div>
+      <h3>Import users via .csv file</h3>
+      <%= form_tag import_users_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <br>
+        <%= submit_tag "Import CSV" %>
+      <% end %>
+    </div>
   </body>
 </html>
 
