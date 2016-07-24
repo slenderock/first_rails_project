@@ -7,11 +7,15 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'bcrypt-ruby', require: 'bcrypt'
 gem 'thin'
+gem 'sidekiq', '3.2.5'
+gem 'sinatra', require: false
 gem 'slim'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'cancancan', '~> 1.9'
+
+gem 'launchy'
 
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'

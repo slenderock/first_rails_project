@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       redirect_to log_in_path
     else
       @user.images.build
-      render 'new'
+      render :new
     end
   end
 
@@ -31,21 +31,28 @@ class UsersController < ApplicationController
       flash[:success] = 'Profile updated'
       redirect_to @user
     else
-      render 'edit'
+      render :edit
     end
   end
 
   def destroy
     @user.destroy
-    redirect_to users_path, notice: 'User deleted.'
+    flash[:success] = 'User deleted.'
+    redirect_to users_path
   end
 
   def show
   end
 
   def import
-    User.import(params[:file])
-    redirect_to users_path, notice: 'Users imported.'
+    if params[:file]
+      UserUploaderWorker.perform_async(params[:file].path)
+      flash[:success] = 'Users should be uploaded in few minutes'
+    else
+      flash[:error] = 'No File Chosen'
+    end
+
+    redirect_to users_path
   end
 
   private

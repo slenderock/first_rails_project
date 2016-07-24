@@ -43,8 +43,8 @@
 
               <td align = 'center'><%= link_to 'show', user_path(user), class: 'btn btn-info' %></td>
               <td align = 'center'><%= link_to 'edit', edit_user_path(user), class: 'btn btn-warning' %></td>
-              <td align = 'center'><%= button_to 'delete', user, method: :delete, :confirm => 'Are you sure?', class: 'btn btn-danger' %></td>
-
+              <td align = 'center'><%= button_to 'delete', user, method: :delete, class: 'btn btn-danger' %>
+              </td>
             </tr>
           <% end -%>
         <% end %>

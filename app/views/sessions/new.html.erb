@@ -12,14 +12,6 @@
       <%= form_tag sessions_path do %>
         <h2 class="form-signin-heading", align="center">Log in</h2>
 
-        <%if @error %>
-          <div class="alert alert-danger">
-            <strong>
-              <%= @error %>
-            </strong>
-          </div>
-        <%end%>
-
         <%= email_field_tag :email,'',autofocus: true, class: 'form-control', placeholder: 'Email Address'%><br />
         <%= password_field_tag :password, '', autocomplete: "off", class: 'form-control' , placeholder: 'Password' %><br />
 
