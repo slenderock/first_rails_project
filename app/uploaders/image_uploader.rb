@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-# Avatar uploader carriarwave
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 

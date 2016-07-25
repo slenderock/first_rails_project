@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 # Create 50 user with default avatar
 Image.delete_all
 User.delete_all

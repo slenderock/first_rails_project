@@ -1,5 +1,3 @@
-# frozen_string_literal: false
-# Users controller
 class UsersController < ApplicationController
   load_and_authorize_resource
 

@@ -1,4 +1,3 @@
-# UserUploader
 class UserUploaderWorker
   include Sidekiq::Worker
   require 'csv'
@@ -16,6 +15,7 @@ class UserUploaderWorker
         user.first.update_attributes(user_hash)
       else
         User.create!(user_hash)
+        UserMailer.welcome_email(user).deliver_later
       end
     end
   end

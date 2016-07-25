@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-# model users
 class User < ActiveRecord::Base
   has_many :images, as: :imageable
 
@@ -53,9 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def age_checking
-    if birthday && age_calculate < 15
-      errors.add(:birthday, 'U are too small, baby')
-    end
+    errors.add(:birthday, 'U are too small, baby') if birthday && age_calculate < 15
   end
 
   def check_avatar
