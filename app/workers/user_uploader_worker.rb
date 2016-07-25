@@ -7,7 +7,6 @@ class UserUploaderWorker
                   retry: false
 
   def perform(file)
-    # User.import(file)
     CSV.foreach(file, headers: true) do |row|
       user_hash = row.to_hash.merge('password' => SecureRandom.hex(8))
       user = User.where(email: user_hash['email'])
@@ -15,7 +14,7 @@ class UserUploaderWorker
         user.first.update_attributes(user_hash)
       else
         User.create!(user_hash)
-        UserMailer.welcome_email(user).deliver_later
+        UserMailer.welcome_email(user_hash).deliver_later
       end
     end
   end
