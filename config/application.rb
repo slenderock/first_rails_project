@@ -10,5 +10,6 @@ module SvitlaProject
   # App
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
+    config.active_record.cache_timestamp_format = :nsec
   end
 end

@@ -14,8 +14,9 @@ class UserUploaderWorker
         user.first.update_attributes(user_hash)
       else
         User.create!(user_hash)
-        UserMailer.welcome_email(user_hash).deliver_later
       end
+
+      UserMailer.welcome_email(user.first).deliver
     end
   end
 end

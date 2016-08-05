@@ -1,9 +1,10 @@
 class UserMailer < ApplicationMailer
-  default from: 'svitla_project@gmail.com'
+  default from: 'sergiy20101995@gmail.com'
 
   def welcome_email(user)
     @user = user
-    @url  = 'http://example.com/login'
-    mail(to: @user['email'], subject: 'Welcome to My Awesome Site')
+    @url  = 'https://cryptic-tundra-49542.herokuapp.com/'
+    # binding.pry
+    mail(to: user.email, subject: 'Welcome to My Awesome Site')
   end
 end

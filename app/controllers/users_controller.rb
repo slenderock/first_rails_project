@@ -60,7 +60,8 @@ class UsersController < ApplicationController
                                  :birthday, :active, :password,
                                  :password_confirmation, :images_attributes,
                                  :position, :role,
-                                 images_attributes: [:imageable_id,
+                                 images_attributes: [:id,
+                                                     :imageable_id,
                                                      :imageable_type,
                                                      :image])
   end
