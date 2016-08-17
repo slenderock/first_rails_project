@@ -56,6 +56,5 @@ class User < ActiveRecord::Base
 
   def check_avatar
     images.create! if images.empty?
-    images.first.delete while images.count > 1
   end
 end

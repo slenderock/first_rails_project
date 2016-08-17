@@ -16,7 +16,7 @@ class UserUploaderWorker
         User.create!(user_hash)
       end
 
-      UserMailer.welcome_email(user.first).deliver
+      UserMailer.welcome_email(user_hash).deliver
     end
   end
 end
